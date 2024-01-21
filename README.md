@@ -1,13 +1,13 @@
 # QR Code Generator with AWS Lambda and S3
 
-This project is a serverless application that generates QR codes for given URLs and uploads them to an Amazon S3 bucket. It utilizes AWS Lambda Function URLs to provide direct HTTP access to the Lambda function.
+This project is a serverless application that generates QR codes for given URLs and uploads them to an Amazon S3 bucket. It utilizes an AWS Lambda Function URL to provide direct HTTP access to the Lambda function.
 
 ## Features
 
 - **URL to QR Code Conversion:** Converts a provided URL into a QR code.
 - **AWS S3 Integration:** Automatically uploads the generated QR code images to a specified S3 bucket.
 - **Serverless Architecture:** Runs as an AWS Lambda function for easy deployment and scalability.
-- **Direct HTTP Access:** Utilizes AWS Lambda Function URL for straightforward HTTP invocation.
+- **Direct HTTP Access:** Utilizes AWS Lambda Function URL for HTTP requests.
 
 ## Prerequisites
 
