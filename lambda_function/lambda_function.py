@@ -35,6 +35,7 @@ def lambda_handler(event, context):
     location = s3.get_bucket_location(Bucket='qr-code-generator-py')['LocationConstraint']
     region = '' if location is None else f'{location}'  #if region === undefined || region === null -> region = ''
     qr_code_url = f"https://s3-{region}.amazonaws.com/{'qr-code-generator-py'}/{filename}"
+    #https://s3-us-west-2.amazonaws.com/qr-code-generator-py/ameliahill.me.png
     
     return {
         'statusCode': 200,
