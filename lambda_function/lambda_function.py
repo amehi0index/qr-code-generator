@@ -18,9 +18,13 @@ def lambda_handler(event, context):
     # body = json.loads(event.get('body', '{}'))
     body = json.loads(event['body'])
     url = body['url']
+
+    bg_color = body['bgcolor']
+    color = body['color']
     
     # Generate QR code
     img = qrcode.make(url)
+
     img_bytes = io.BytesIO()
     img.save(img_bytes)
     img_bytes = img_bytes.getvalue()

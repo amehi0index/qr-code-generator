@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #000;
+} */
+
+.qrCode{
+  position: relative;
+  height: 400px;
+  width: 400px;
+  background-color: blue;
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.eyes{
+  /* background-color: orange; */
+  position: absolute;
+  top:0;
+  left: 0;
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topRow{
+  /* background-color: pink; */
+  display: flex;
+  justify-content:space-between;
+  width: 80%;
+  margin-top: 25px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
+}
+
+.bottomRow{
+  /* background-color: pink; */
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 35px;
+}
