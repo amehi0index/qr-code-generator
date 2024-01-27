@@ -12,9 +12,11 @@ const App = () => {
   const renderInnerShape = () => {
     switch (innerShape) {
       case 'circle':
-        return <circle cx="50" cy="50" r="25" fill={innerColor} />
+        // return <circle cx="50" cy="50" r="25" fill={innerColor} />
+        return <circle cx="42.5" cy="42.5" r="18" fill={innerColor} />
       case 'rectangle':
-        return <rect x="35" y="35" width="30" height="30" fill={innerColor} />
+        // return <rect x="35" y="35" width="30" height="30" fill={innerColor} />
+        return <rect x="27.5" y="27.5" width="30" height="30" fill={innerColor} />
       default:
         return null
     }
@@ -25,21 +27,21 @@ const App = () => {
       case 'circle':
         return (
           <g>
-            <circle cx="50" cy="50" r="40" stroke={color} strokeWidth="10" fill="none" />
+            <circle cx="42.5" cy="42.5" r="32.5" stroke={color} strokeWidth="10" fill="none" />
             {renderInnerShape()}
           </g>
         )
       case 'rectangle':
         return (
           <g>
-            <rect x="10" y="10" width="80" height="80" stroke={color} strokeWidth="10" fill="none" />
+            <rect x="10" y="10" width="65" height="65" stroke={color} strokeWidth="10" fill="none" />
             {renderInnerShape()}
           </g>
         )
       case 'rounded-square':
         return (
           <g>
-            <rect x="10" y="10" width="80" height="80" rx="12" ry="12" stroke={color} strokeWidth="10" fill="none" />
+            <rect x="10" y="10" width="65" height="65" rx="12" ry="12" stroke={color} strokeWidth="10" fill="none" />
             {renderInnerShape()}
           </g>
         )
