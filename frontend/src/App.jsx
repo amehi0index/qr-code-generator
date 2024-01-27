@@ -8,6 +8,7 @@ const App = () => {
   const [innerShape, setInnerShape] = useState('circle')
   const [innerColor, setInnerColor] = useState('#FF0000')
   const [color, setColor] = useState('#000000')
+  const [patternColor, setPatternColor] = useState('#000000')
 
   const renderInnerShape = () => {
     switch (innerShape) {
@@ -78,38 +79,70 @@ const App = () => {
 
       <div className="styleChoices">
 
-        <h1>Style Your QR Code</h1>
+        <h2>Style Your QR Code</h2>
 
-        <div className="patterns">
+        <div className="patternsContainer">
           <label>Patterns</label>
-          <div className="patternContainer">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
+          <div className="patterns">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
 
-        <div className="colors">
+        <div className="colorsContainer">
           <label>Colors</label>
+          <div className="colors">
+            <span className="black" value="black"></span>
+            <span className="blue" value="blue"></span>
+            <span className="orange" value="orange"></span>
+            <span className="red" value="red"></span>
+            <span className="green" value="green"></span>
+            <span className="custom" value="custom"></span>
+          </div>
         </div>
 
-        <div className="outerEye">
-         
+        <div className="outerEyeContainer">
+          <div className="outerShapeContainer">
             <label>Outer Shape</label>
-            <select value={outerShape} onChange={e => setOuterShape(e.target.value)}>
-              <option value="circle">Circle</option>
-              <option value="rectangle">Rectangle</option>
-              <option value="rounded-square">Rounded</option>
-            </select>
+            <div className="outerShapeBtns">
+              <button value="circle" onClick={e => setOuterShape(e.target.value)}>
+                <span className="circleShape">&nbsp;</span>
+              </button>
+              <button value="rectangle" onClick={e => setOuterShape(e.target.value)}>
+                <span className="rectangleShape"></span>
+              </button>
+              <button value="rounded-square" onClick={e => setOuterShape(e.target.value)}>
+                <span className="roundedShape"></span>
+              </button>
+            </div>
+          </div>
+
+          <div className="outerShapeColor">
+            <label>Select Color</label>
             <input type="color" value={outerColor} onChange={e => setOuterColor(e.target.value)} />
+          </div>
           
         </div>
 
-        < div className="innerEye">
+        <div className="innerEyeContainer">
+          <div className="innerShapeContainer">
             <label>Inner Shape</label>
-            <select value={innerShape} onChange={e => setInnerShape(e.target.value)}>
-              <option value="circle">Circle</option>
-              <option value="rectangle">Rectangle</option>
-            </select>
+            <div className="innerShapeBtns">
+              <button value="circle" onClick={e => setInnerShape(e.target.value)}><span className="circleShape"></span></button>
+              <button value="rectangle" onClick={e => setInnerShape(e.target.value)}><span className="rectangleShape"></span></button>
+              <button className="ghostBtn" value="ghost" onClick={e => setInnerShape(e.target.value)}><span></span></button>
+            </div>
+          </div>
+
+          <div className="innerShapeColor">
+            <label>Select Color</label>
             <input type="color" value={innerColor} onChange={e => setInnerColor(e.target.value)} />
+          </div>
+      
         </div>
        
        <button className="downloadBtn">Download Your QR Code</button>

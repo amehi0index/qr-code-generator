@@ -15,10 +15,10 @@
   background: #000;
 } */
 .container{
-  padding: 40px;
+  padding: 20px 0px;
   border-radius: 16px;
   height: 80vh;
-  width: 100%;
+  width: 90%;
   background-color: rgb(231, 231, 245);
   display: flex;
   justify-content: space-between;
@@ -69,70 +69,112 @@
 .styleChoices{
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
   align-items: center;
   background-color:#06063c;
   height: 100%;
-  padding: 20px;
+  padding: 20px 60px;
   color: white;
-  border-radius: 10px;
+  /* border-radius: 14px; */
+  border-radius: 0px 14px 14px 0px; /*TL TR BR BL*/
 }
 
-/* .styleChoices div{ */
-  /* width: 400px;
+.styleChoices h2{
+  line-height: 0;
+}
+
+.styleChoices .patternsContainer{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  height: 60px;
+  width:350px;
   background-color:#080854;
   border-radius: 12px;
-  padding: 10px 0 0 10px;
+  padding: 12px;
+  margin-top: 0;
+}
+
+.styleChoices .patterns, .colors{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.colors .black {
+  background-color: #000;
+}
+.colors .blue {
+  background-color: #2f1d9f;
+}
+.colors .orange {
+  background-color: orangered;
+}
+.colors .red {
+  background-color: #a31f1f;
+}
+.colors .green {
+  background-color: #287a20;
+}
+
+/* .colors .custom {
+  background-color: #000;
 } */
 
-.patterns{
-  display: flex;
-  flex-direction:column;
-  width: 400px;
-  background-color:#080854;
-  border-radius: 12px;
-  padding: 10px 0 0 10px;
-}
-
-.patternContainer{
-  display: flex;
-}
- .patternContainer span{
-  height:20px;
-  width:20px;
+.patterns span, .colors span{
+  height:30px;
+  width:30px;
   border: 2px white solid;
-  border-radius: 8px;
+  border-radius: 6px;
+  cursor: pointer;
 } 
 
-.colors{
+.styleChoices .colorsContainer{
   display: flex;
   flex-direction:column;
-  width: 400px;
+  justify-content: space-between;
+  height: 60px;
+  width:350px;
   background-color:#080854;
   border-radius: 12px;
-  padding: 10px 0 0 10px;
+  padding: 12px;
 }
 
-.outerEye{
+.styleChoices .outerEyeContainer, .innerEyeContainer{
   display: flex;
-  flex-direction:column;
-  width: 400px;
+  height: 60px;
+  width:350px;
   background-color:#080854;
   border-radius: 12px;
-  padding: 10px 0 0 10px;
+  padding: 12px;
 }
 
-.innerEye{
+.outerEyeContainer label, .innerEyeContainer label{
+  padding-bottom:8px;
+}
+
+.outerShapeContainer, .innerShapeContainer{
   display: flex;
-  flex-direction:column;
-  width: 400px;
-  background-color:#080854;
-  border-radius: 12px;
-  padding: 10px 0 0 10px;
+  flex-direction: column;
+  width:45%;
+  /* background: green; */
 }
 
+.outerShapeBtns, .innerShapeBtns {
+  display: flex;
+  /* justify-content: space-around;  */
+  justify-content: space-between; 
+  width:85%;
+  /* background-color: orange; */
+}
 
-.downloadBtn{
+.outerShapeColor, .innerShapeColor{
+  display:flex;
+  flex-direction: column;
+}
+
+.styleChoices .downloadBtn{
   background-color: #1212ad;
   border-radius: 12px;
   padding: 12px 24px;
@@ -143,3 +185,59 @@
   color: #ffffff;
   cursor: pointer;
 }
+
+.outerShapeBtns input, .innerShapeBtns input{
+  margin-top: 30px;
+  padding-top: 30px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.outerShapeBtns button, .innerShapeBtns button {
+  background-color: transparent;
+  height:36px;
+  width:36px;
+  border: 2px white solid;
+  border-radius: 6px;
+  color: #ffff;
+  margin: 0 5px; 
+  padding:8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* flex-grow: 1;  */
+}
+
+
+.circleShape, .rectangleShape, .roundedShape {
+  display: inline-block;
+
+}
+
+.circleShape {
+  background-color: #fff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+.rectangleShape {
+  background-color: #fff; 
+  height:16px;
+  width:16px;
+}
+
+.roundedShape {
+  background-color: #fff; 
+  height: 16px;
+  width: 16px;
+  border-radius: 5px; 
+}
+
+.ghostBtn{
+  visibility: hidden;
+}
+
+/* .outerSha */
