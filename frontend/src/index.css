@@ -2,7 +2,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
+  font-family: 'Lato', sans-serif;
 }
 
 /* body {
@@ -13,12 +14,22 @@
   min-height: 100vh;
   background: #000;
 } */
+.container{
+  padding: 40px;
+  border-radius: 16px;
+  height: 80vh;
+  width: 100%;
+  background-color: rgb(231, 231, 245);
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
 
+}
 .qrCode{
   position: relative;
   height: 400px;
   width: 400px;
-  background-color: blue;
+  background-color: rgb(235, 235, 245);
   margin-bottom: 200px;
   display: flex;
   flex-direction: column;
@@ -53,4 +64,82 @@
   justify-content: space-between;
   width: 80%;
   margin-bottom: 35px;
+}
+
+.styleChoices{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#06063c;
+  height: 100%;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+/* .styleChoices div{ */
+  /* width: 400px;
+  background-color:#080854;
+  border-radius: 12px;
+  padding: 10px 0 0 10px;
+} */
+
+.patterns{
+  display: flex;
+  flex-direction:column;
+  width: 400px;
+  background-color:#080854;
+  border-radius: 12px;
+  padding: 10px 0 0 10px;
+}
+
+.patternContainer{
+  display: flex;
+}
+ .patternContainer span{
+  height:20px;
+  width:20px;
+  border: 2px white solid;
+  border-radius: 8px;
+} 
+
+.colors{
+  display: flex;
+  flex-direction:column;
+  width: 400px;
+  background-color:#080854;
+  border-radius: 12px;
+  padding: 10px 0 0 10px;
+}
+
+.outerEye{
+  display: flex;
+  flex-direction:column;
+  width: 400px;
+  background-color:#080854;
+  border-radius: 12px;
+  padding: 10px 0 0 10px;
+}
+
+.innerEye{
+  display: flex;
+  flex-direction:column;
+  width: 400px;
+  background-color:#080854;
+  border-radius: 12px;
+  padding: 10px 0 0 10px;
+}
+
+
+.downloadBtn{
+  background-color: #1212ad;
+  border-radius: 12px;
+  padding: 12px 24px;
+  width: 60%;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
 }
