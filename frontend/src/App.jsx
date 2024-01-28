@@ -1,6 +1,10 @@
 import { useState } from 'react'
-import Rounded from './assets/rounded.svg'
-import horizontal from './assets/horizontal.svg'
+import Rounded from './patterns/Rounded'
+import Dots from './patterns/Dots'
+import GapSquares from './patterns/GapSquares'
+import HorizontalBars from './patterns/HorizontalBars'
+import VerticalBars from './patterns/VerticalBars'
+import Squares from './patterns/Squares'
 
 const App = () => {
   const [outerShape, setOuterShape] = useState('circle')
@@ -9,6 +13,26 @@ const App = () => {
   const [innerColor, setInnerColor] = useState('#FF0000')
   const [color, setColor] = useState('#000000')
   const [patternColor, setPatternColor] = useState('#000000')
+  const [patternChoice, setPatternChoice] = useState('dots')
+
+  const renderPatternChoice = () => {
+    switch (patternChoice) {
+      case 'rounded':
+        return <Rounded  color={patternColor} />
+      case 'gap-squares':
+        return <GapSquares color={patternColor} />
+      case 'horizontal-bars':
+        return <HorizontalBars  color={patternColor}/>
+      case 'vertical-bars':
+        return <VerticalBars  color={patternColor}/>
+      case 'dots':
+        return <Dots color={patternColor}/>
+      case 'squares':
+        return <Squares color={patternColor} />
+      default:
+        return null
+    }
+  }
 
   const renderInnerShape = () => {
     switch (innerShape) {
@@ -54,7 +78,9 @@ const App = () => {
   return (
     <div className="container">
       <div className="qrCode">
-        <img src={horizontal} alt="" />
+
+        {renderPatternChoice()}
+        {/* <Rounded color={patternColor}/> */}
         
         <div className="eyes">
 
@@ -84,12 +110,12 @@ const App = () => {
         <div className="patternsContainer">
           <label>Patterns</label>
           <div className="patterns">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span onClick={e => {setPatternChoice('rounded')}}>R</span>
+            <span onClick={e => {setPatternChoice('gap-squares')}}>GS</span>
+            <span onClick={e => {setPatternChoice('horizontal-bars')}}>HB</span>
+            <span onClick={e => {setPatternChoice('verticalbars')}}>VB</span>
+            <span onClick={e => {setPatternChoice('dots')}}>D</span>
+            <span onClick={e => {setPatternChoice('squares')}}>SQ</span>
           </div>
         </div>
 
@@ -98,9 +124,9 @@ const App = () => {
           <div className="defaultPatternColors">
             <label>Colors</label>
             <div className="defaultColorTabs">
-              <span className="black" value="black"></span>
-              <span className="blue" value="blue"></span>
-              <span className="orange" value="orange"></span>
+              <span className="black" onClick={e => setPatternColor('#000000')}></span>
+              <span className="blue" onClick={e => setPatternColor('#2f1d9f')}></span>
+              <span className="orange" onClick={e => setPatternColor('#ff4400')}></span>
               {/* <span className="red" value="red"></span>
               <span className="green" value="green"></span>
               <span className="custom" value="custom"></span> */}
