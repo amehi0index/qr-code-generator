@@ -93,15 +93,23 @@ const App = () => {
           </div>
         </div>
 
-        <div className="colorsContainer">
-          <label>Colors</label>
-          <div className="colors">
-            <span className="black" value="black"></span>
-            <span className="blue" value="blue"></span>
-            <span className="orange" value="orange"></span>
-            <span className="red" value="red"></span>
-            <span className="green" value="green"></span>
-            <span className="custom" value="custom"></span>
+        <div className="patternColorsContainer">
+         
+          <div className="defaultPatternColors">
+            <label>Colors</label>
+            <div className="defaultColorTabs">
+              <span className="black" value="black"></span>
+              <span className="blue" value="blue"></span>
+              <span className="orange" value="orange"></span>
+              {/* <span className="red" value="red"></span>
+              <span className="green" value="green"></span>
+              <span className="custom" value="custom"></span> */}
+            </div>
+          </div>
+
+          <div className="customPatternColor">
+            <label>Custom Color</label>
+            <input type="color" value={patternColor} onChange={e => setPatternColor(e.target.value)} />
           </div>
         </div>
 
@@ -109,13 +117,13 @@ const App = () => {
           <div className="outerShapeContainer">
             <label>Outer Shape</label>
             <div className="outerShapeBtns">
-              <button value="circle" onClick={e => setOuterShape(e.target.value)}>
+              <button onClick={() => setOuterShape('circle')}>
                 <span className="circleShape">&nbsp;</span>
               </button>
-              <button value="rectangle" onClick={e => setOuterShape(e.target.value)}>
+              <button onClick={() => setOuterShape('rectangle')}>
                 <span className="rectangleShape"></span>
               </button>
-              <button value="rounded-square" onClick={e => setOuterShape(e.target.value)}>
+              <button onClick={() => setOuterShape('rounded-square')}>
                 <span className="roundedShape"></span>
               </button>
             </div>
@@ -132,11 +140,16 @@ const App = () => {
           <div className="innerShapeContainer">
             <label>Inner Shape</label>
             <div className="innerShapeBtns">
-              <button value="circle" onClick={e => setInnerShape(e.target.value)}><span className="circleShape"></span></button>
-              <button value="rectangle" onClick={e => setInnerShape(e.target.value)}><span className="rectangleShape"></span></button>
-              <button className="ghostBtn" value="ghost" onClick={e => setInnerShape(e.target.value)}><span></span></button>
-            </div>
+            <button onClick={() => setOuterShape('circle')}>
+              <span className="circleShape"></span>
+            </button>
+            <button onClick={() => setOuterShape('rectangle')}>
+              <span className="rectangleShape"></span></button>
+            <button className="ghostBtn" disabled>
+              <span></span>
+            </button>
           </div>
+        </div>
 
           <div className="innerShapeColor">
             <label>Select Color</label>

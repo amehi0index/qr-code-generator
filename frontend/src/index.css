@@ -1,20 +1,13 @@
+/* Root Styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  /* text-align: center; */
   font-family: 'Lato', sans-serif;
 }
 
-/* body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background: #000;
-} */
-.container{
+/* Container Layout */
+.container {
   padding: 20px 0px;
   border-radius: 16px;
   height: 80vh;
@@ -22,10 +15,11 @@
   background-color: rgb(231, 231, 245);
   display: flex;
   justify-content: space-between;
-  align-items:center;
-
+  align-items: center;
 }
-.qrCode{
+
+/* QR Code Styles */
+.qrCode {
   position: relative;
   height: 400px;
   width: 400px;
@@ -35,146 +29,129 @@
   flex-direction: column;
 }
 
-.eyes{
-  /* background-color: orange; */
+/* Eye Positioning and Layout */
+.eyes {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.topRow{
-  /* background-color: pink; */
-  display: flex;
-  justify-content:space-between;
-  width: 80%;
-  margin-top: 25px;
-  /* margin-left: 20px;
-  margin-right: 20px; */
-}
-
-.bottomRow{
-  /* background-color: pink; */
+/* Top and Bottom Row Styles */
+.topRow, .bottomRow {
   display: flex;
   justify-content: space-between;
   width: 80%;
+  margin-top: 25px;
+}
+
+.bottomRow {
   margin-bottom: 35px;
 }
 
-.styleChoices{
-  display:flex;
+/* Style Choices Section */
+.styleChoices {
+  display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   justify-content: space-evenly;
   align-items: center;
-  background-color:#06063c;
+  background-color: #06063c;
   height: 100%;
   padding: 20px 60px;
   color: white;
-  /* border-radius: 14px; */
-  border-radius: 0px 14px 14px 0px; /*TL TR BR BL*/
+  border-radius: 0px 14px 14px 0px;
 }
 
-.styleChoices h2{
+.styleChoices h2 {
   line-height: 0;
 }
 
-.styleChoices .patternsContainer{
+/* Pattern and Color Container Styles */
+.styleChoices .patternsContainer, .patternColorsContainer, .outerEyeContainer, .innerEyeContainer {
   display: flex;
-  flex-direction:column;
-  justify-content: space-between;
   height: 60px;
-  width:350px;
-  background-color:#080854;
+  width: 350px;
+  background-color: #080854;
   border-radius: 12px;
   padding: 12px;
+}
+
+.styleChoices .patternsContainer {
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 0;
 }
 
-.styleChoices .patterns, .colors{
+.styleChoices .patterns {
   display: flex;
   justify-content: space-around;
   width: 80%;
 }
 
-.colors .black {
+/* Default Pattern Colors */
+.defaultPatternColors .black {
   background-color: #000;
 }
-.colors .blue {
+
+.defaultPatternColors .blue {
   background-color: #2f1d9f;
 }
-.colors .orange {
+
+.defaultPatternColors .orange {
   background-color: orangered;
 }
-.colors .red {
+
+.defaultPatternColors .red {
   background-color: #a31f1f;
 }
-.colors .green {
+
+.defaultPatternColors .green {
   background-color: #287a20;
 }
 
-/* .colors .custom {
-  background-color: #000;
-} */
-
-.patterns span, .colors span{
-  height:30px;
-  width:30px;
+/* Pattern and Color Span Styles */
+.patterns span, .defaultPatternColors span {
+  height: 30px;
+  width: 30px;
   border: 2px white solid;
   border-radius: 6px;
   cursor: pointer;
-} 
-
-.styleChoices .colorsContainer{
-  display: flex;
-  flex-direction:column;
-  justify-content: space-between;
-  height: 60px;
-  width:350px;
-  background-color:#080854;
-  border-radius: 12px;
-  padding: 12px;
 }
 
-.styleChoices .outerEyeContainer, .innerEyeContainer{
-  display: flex;
-  height: 60px;
-  width:350px;
-  background-color:#080854;
-  border-radius: 12px;
-  padding: 12px;
+/*  Outer and Inner Eye Containers Labels*/
+.outerEyeContainer label, .innerEyeContainer label, .customPatternColor label, .defaultPatternColors label{
+  padding-bottom: 8px;
 }
 
-.outerEyeContainer label, .innerEyeContainer label{
-  padding-bottom:8px;
-}
-
-.outerShapeContainer, .innerShapeContainer{
+/* Shape Container Styles */
+.outerShapeContainer, .innerShapeContainer, .defaultPatternColors {
   display: flex;
   flex-direction: column;
-  width:45%;
+  width: 45%;
   /* background: green; */
 }
 
-.outerShapeBtns, .innerShapeBtns {
+/* Button Styles for Shape Selection */
+.outerShapeBtns, .innerShapeBtns, .defaultColorTabs {
   display: flex;
-  /* justify-content: space-around;  */
-  justify-content: space-between; 
-  width:85%;
+  justify-content: space-between;
+  width: 85%;
   /* background-color: orange; */
 }
 
-.outerShapeColor, .innerShapeColor{
-  display:flex;
+/* Color Input Styles */
+.outerShapeColor, .innerShapeColor, .customPatternColor {
+  display: flex;
   flex-direction: column;
 }
 
-.styleChoices .downloadBtn{
+/* Download Button Styles */
+.styleChoices .downloadBtn {
   background-color: #1212ad;
   border-radius: 12px;
   padding: 12px 24px;
@@ -186,34 +163,58 @@
   cursor: pointer;
 }
 
-.outerShapeBtns input, .innerShapeBtns input{
-  margin-top: 30px;
-  padding-top: 30px;
+/* Color Input Field Styling */
+.outerShapeColor input[type=color], .innerShapeColor input[type=color], .customPatternColor input[type=color] {
+  -webkit-appearance: none;
+  border: 2px white solid;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
   background-color: transparent;
+  padding: 0;
+  margin: 0 5px;
   outline: none;
-  border: none;
 }
 
+/* Webkit Specific Styles for Color Input */
+.outerShapeColor input[type=color]::-webkit-color-swatch-wrapper,
+.innerShapeColor input[type=color]::-webkit-color-swatch-wrapper,
+.customPatternColor input[type=color]::-webkit-color-swatch-wrapper,
+.outerShapeColor input[type=color]::-webkit-color-swatch,
+.customPatternColor input[type=color]::-webkit-color-swatch,
+.innerShapeColor input[type=color]::-webkit-color-swatch {
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Firefox Specific Styles for Color Input */
+.outerShapeColor input[type=color]::-moz-color-swatch,
+.innerShapeColor input[type=color]::-moz-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+/* Button Styles for Shape Buttons */
 .outerShapeBtns button, .innerShapeBtns button {
   background-color: transparent;
-  height:36px;
-  width:36px;
+  height: 36px;
+  width: 36px;
   border: 2px white solid;
   border-radius: 6px;
   color: #ffff;
-  margin: 0 5px; 
-  padding:8px;
+  margin: 0 5px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  /* flex-grow: 1;  */
 }
 
-
+/* Shape Indicator Styles */
 .circleShape, .rectangleShape, .roundedShape {
   display: inline-block;
-
 }
 
 .circleShape {
@@ -224,20 +225,19 @@
 }
 
 .rectangleShape {
-  background-color: #fff; 
-  height:16px;
-  width:16px;
+  background-color: #fff;
+  height: 16px;
+  width: 16px;
 }
 
 .roundedShape {
-  background-color: #fff; 
+  background-color: #fff;
   height: 16px;
   width: 16px;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
-.ghostBtn{
+/* Hidden Button Style */
+.ghostBtn {
   visibility: hidden;
 }
-
-/* .outerSha */
