@@ -23,9 +23,12 @@
   position: relative;
   height: 400px;
   width: 400px;
-  background-color: rgb(235, 235, 245);
+  /* background-color: rgb(50, 198, 181); */
+  background-color: rgb(209, 209, 215);
   margin-bottom: 200px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -116,6 +119,9 @@
 
 /* Pattern and Color Span Styles */
 .patterns span, .defaultPatternColors span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 30px;
   width: 30px;
   border: 2px white solid;
@@ -241,3 +247,17 @@
 .ghostBtn {
   visibility: hidden;
 }
+
+/* .svg-container {
+  position: relative;
+  width: 400px; 
+  height: 400px; 
+  background-color: pink;
+}
+
+.svg-container svg {
+  position: absolute;
+  top: 50%;  
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+} */
