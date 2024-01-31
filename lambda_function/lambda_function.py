@@ -16,26 +16,26 @@ logger.setLevel(logging.INFO)
 # Initialize a session using Amazon S3
 s3 = boto3.client('s3')
 
-def style_inner_eyes(img, shape='default', color=(0, 0, 0)):
+def style_inner_eyes(img, shape='default', color=(255, 255, 255)): 
     img_size = img.size[0]
-    mask = Image.new('L', img.size, 0)
+    mask = Image.new('RGB', img.size, (0, 0, 0))
     draw = ImageDraw.Draw(mask)
 
     if shape == 'circle':
         # Draw circles for the eyes
-        radius = 15  # Example radius
-        draw.ellipse((60-radius, 60-radius, 60+radius, 60+radius), fill=255)
-        draw.ellipse((img_size-60-radius, 60-radius, img_size-60+radius, 60+radius), fill=255)
-        draw.ellipse((60-radius, img_size-60-radius, 60+radius, img_size-60+radius), fill=255)
+        radius = 15
+        draw.ellipse((60-radius, 60-radius, 60+radius, 60+radius), fill=color)
+        draw.ellipse((img_size-60-radius, 60-radius, img_size-60+radius, 60+radius), fill=color)
+        draw.ellipse((60-radius, img_size-60-radius, 60+radius, img_size-60+radius), fill=color)
     else:
         # Default to square if not circle
-        draw.rectangle((60, 60, 90, 90), fill=255)
-        draw.rectangle((img_size-90, 60, img_size-60, 90), fill=255)
-        draw.rectangle((60, img_size-90, 90, img_size-60), fill=255)
+        draw.rectangle((60, 60, 90, 90), fill=color)
+        draw.rectangle((img_size-90, 60, img_size-60, 90), fill=color)
+        draw.rectangle((60, img_size-90, 90, img_size-60), fill=color)
 
     return mask
 
-def style_outer_eyes(img, shape='default', color=(0, 0, 0)):
+def style_outer_eyes(img, shape='default', color=(255, 255, 255)): 
     img_size = img.size[0]
     mask = Image.new('L', img.size, 0)
     draw = ImageDraw.Draw(mask)
@@ -43,14 +43,14 @@ def style_outer_eyes(img, shape='default', color=(0, 0, 0)):
     if shape == 'circle':
         # Draw circles for the eyes
         radius = 35  # Example radius
-        draw.ellipse((40-radius, 40-radius, 40+radius, 40+radius), fill=255)
-        draw.ellipse((img_size-40-radius, 40-radius, img_size-40+radius, 40+radius), fill=255)
-        draw.ellipse((40-radius, img_size-40-radius, 40+radius, img_size-40+radius), fill=255)
+        draw.ellipse((40-radius, 40-radius, 40+radius, 40+radius), fill=color)
+        draw.ellipse((img_size-40-radius, 40-radius, img_size-40+radius, 40+radius), fill=color)
+        draw.ellipse((40-radius, img_size-40-radius, 40+radius, img_size-40+radius), fill=color)
     else:
         # Default to square if not circle
-        draw.rectangle((40, 40, 110, 110), fill=255)
-        draw.rectangle((img_size-110, 40, img_size-40, 110), fill=255)
-        draw.rectangle((40, img_size-110, 110, img_size-40), fill=255)
+        draw.rectangle((40, 40, 110, 110), fill=color)
+        draw.rectangle((img_size-110, 40, img_size-40, 110), fill=color)
+        draw.rectangle((40, img_size-110, 110, img_size-40), fill=color)
 
     return mask
 
@@ -118,7 +118,7 @@ def lambda_handler(event, context):
 
     # Generate the URL of the uploaded QR code
     location = s3.get_bucket_location(Bucket='qr-code-generator-py')['LocationConstraint']
-    region = '' if location is None else f'{location}'
+    region = '' if location is None else f'{location}' #if null/undefined=>''
     qr_code_url = f"https://s3-{region}.amazonaws.com/{'qr-code-generator-py'}/{filename}"
 
     return {
