@@ -37,20 +37,22 @@ def style_inner_eyes(img, shape='default', color=(255, 255, 255)):
 
 def style_outer_eyes(img, shape='default', color=(255, 255, 255)): 
     img_size = img.size[0]
-    mask = Image.new('L', img.size, 0)
+    mask = Image.new('L', img.size, 0)  # Correct: Mask in 'L' mode for transparency
     draw = ImageDraw.Draw(mask)
+    
+    # Convert RGB color to a single greyscale value for 'L' mode mask
+    greyscale_color = int(sum(color) / 3) if isinstance(color, tuple) else 255
 
     if shape == 'circle':
-        # Draw circles for the eyes
-        radius = 35  # Example radius
-        draw.ellipse((40-radius, 40-radius, 40+radius, 40+radius), fill=color)
-        draw.ellipse((img_size-40-radius, 40-radius, img_size-40+radius, 40+radius), fill=color)
-        draw.ellipse((40-radius, img_size-40-radius, 40+radius, img_size-40+radius), fill=color)
+        radius = 35
+        # Use greyscale_color for fill in 'L' mode mask
+        draw.ellipse((40-radius, 40-radius, 40+radius, 40+radius), fill=greyscale_color)
+        draw.ellipse((img_size-40-radius, 40-radius, img_size-40+radius, 40+radius), fill=greyscale_color)
+        draw.ellipse((40-radius, img_size-40-radius, 40+radius, img_size-40+radius), fill=greyscale_color)
     else:
-        # Default to square if not circle
-        draw.rectangle((40, 40, 110, 110), fill=color)
-        draw.rectangle((img_size-110, 40, img_size-40, 110), fill=color)
-        draw.rectangle((40, img_size-110, 110, img_size-40), fill=color)
+        draw.rectangle((40, 40, 110, 110), fill=greyscale_color)
+        draw.rectangle((img_size-110, 40, img_size-40, 110), fill=greyscale_color)
+        draw.rectangle((40, img_size-110, 110, img_size-40), fill=greyscale_color)
 
     return mask
 
@@ -102,6 +104,9 @@ def lambda_handler(event, context):
     # Apply custom eye styles
     inner_eye_mask = style_inner_eyes(qr_img, innerShape, innerColor)
     outer_eye_mask = style_outer_eyes(qr_img, outerShape, outerColor)
+
+    # Before compositing, convert inner_eye_mask to 'L' if it's not already
+    inner_eye_mask = inner_eye_mask.convert('L') if inner_eye_mask.mode != 'L' else inner_eye_mask
 
     # Composite the final image
     intermediate_img = Image.composite(qr_img, qr_img, inner_eye_mask)
