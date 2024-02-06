@@ -67,7 +67,7 @@ def lambda_handler(event, context):
     # Parse the URL and user selections from the event
     body = json.loads(event['body'])
     url = body['url']
-    patternShape = body['patternShape'] 
+    patternChoice = body['patternChoice'] 
     patternColor = body['patternColor']
     innerShape = body['innerShape'] 
     innerColor = body['innerColor']
@@ -91,7 +91,7 @@ def lambda_handler(event, context):
         'vertical-bars': VerticalBarsDrawer(),
         'dots': CircleModuleDrawer(),
         'squares': SquareModuleDrawer()
-    }.get(patternShape, SquareModuleDrawer())  # Default to SquareModuleDrawer if not specified
+    }.get(patternChoice, SquareModuleDrawer())  # Default to SquareModuleDrawer if not specified
 
     # Generate QR code with custom style
     qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H)
@@ -119,7 +119,7 @@ def lambda_handler(event, context):
 
     # Generate a unique filename and upload to S3
     filename = url.split("://")[1].replace("/", "_") + '.png'
-    s3.put_object(Bucket='qr-code-generator-py', Key=filename, Body=img_bytes, ContentType='image/png', ACL='public-read')
+    s3.put_object(Bucket='qr-code-generator-py', Key=filename, Body=img_bytes, ContentType='image/png', ACL='public-read', ContentDisposition='attachment')
 
     # Generate the URL of the uploaded QR code
     location = s3.get_bucket_location(Bucket='qr-code-generator-py')['LocationConstraint']
@@ -128,5 +128,11 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
+        'headers': {
+               "Content-Type": "application/json",
+        #     'Access-Control-Allow-Origin': '*', 
+        #     'Access-Control-Allow-Headers': 'Content-Type',
+        #     'Access-Control-Allow-Methods': 'OPTIONS,POST'  
+        },
         'body': json.dumps({'message': 'Custom styled QR code generated and uploaded to S3 bucket successfully!', 'qr_code_url': qr_code_url})
     }
