@@ -13,11 +13,8 @@ const App = () => {
   const [patternColor, setPatternColor] = useState('#000000')
   const [patternChoice, setPatternChoice] = useState('dots')
 
-  console.log('patternColor', patternColor)
-
   return (
     <div className="container">
-      {/* <div className="qrCodeContainer"> */}
 
       <div className="qrCodeContainer">
         <QRCode
