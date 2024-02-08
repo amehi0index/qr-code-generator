@@ -19,8 +19,8 @@
 }
 
 .qrCodeContainer{
-  /* background-color:orange; */
-  height:100%;
+  /* height:100%; */
+  height: auto;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -28,39 +28,13 @@
   justify-content: center;
 }
 
-form{
-  margin-top: 20px;
-  width: 400px;
-}
-
-form input[type=url]{
-  /* border-radius: 6px; */
-  border-radius: 6px 0px 0px 6px;
-  height: 36px;
-  padding-left: 10px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  width:70%;
-}
-
-form button{
-  background-color: #1212ad;
-  border-radius: 0px 6px 6px 0px;
-  width:27%;
-  height: 38px;
-  outline: none;
-  border: none;
-  font-size: 14px;
-  color: #ffffff;
-  cursor: pointer;
-}
 
 /* QR Code Styles */
 .qrCode {
-  height: 400px;
-  width: 400px;
-  background-color: rgb(224, 224, 234);
+  max-height: 400px;
+  max-width: 400px;
+  height: 50vw;
+  width: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,15 +71,53 @@ form button{
   /* margin-bottom: 28px; */
 }
 
+.downloadLink, .qrLoad{
+  /* background-color:#06063c; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  /* border: 2px solid #2f1d9f; */
+  padding:12px 0;
+  color: #fff;
+  text-decoration: none;
+  width: 400px;
+  margin-top: 20px;
+}
+
+.qrLoad{
+  background-color:#06063c;
+  border: 2px solid #06063c;
+}
+
+.downloadLink{
+  background-color: #18693a;
+  border: 2px solid #18693a;
+}
+
+.show{
+  visibility: visible;
+}
+
+.downloadLink span, .qrLoad span{
+  padding-right: 7px;
+}
+
+
+.qrLoad .pulsingIcon {
+  animation: pulse 1s infinite;
+}
+
 /* Style Choices Section */
 .styleChoices {
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background-color: #06063c;
   height: 100%;
-  padding: 20px 60px;
+  padding: 20px 30px;
   color: white;
   border-radius: 0px 14px 14px 0px;
 }
@@ -118,10 +130,10 @@ form button{
 .styleChoices .patternsContainer, .patternColorsContainer, .outerEyeContainer, .innerEyeContainer {
   display: flex;
   height: 60px;
-  width: 350px;
+  width: 90%;
   background-color: #080854;
   border-radius: 12px;
-  padding: 12px;
+  padding: 12px 0 16px 16px;
 }
 
 .styleChoices .patternsContainer {
@@ -132,7 +144,7 @@ form button{
 
 .styleChoices .patterns {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 80%;
 }
 
@@ -194,19 +206,6 @@ form button{
 .outerShapeColor, .innerShapeColor, .customPatternColor {
   display: flex;
   flex-direction: column;
-}
-
-/* Download Button Styles */
-.styleChoices .downloadBtn {
-  background-color: #1212ad;
-  border-radius: 12px;
-  padding: 12px 24px;
-  width: 60%;
-  outline: none;
-  border: none;
-  font-size: 14px;
-  color: #ffffff;
-  cursor: pointer;
 }
 
 /* Color Input Field Styling */
@@ -292,6 +291,43 @@ form button{
   visibility: hidden;
 }
 
+/*Style Choices URL Form*/
+.styleChoicesFormContainer{
+  width: 90%;
+  /* padding:20px; */
+}
+
+form{
+  /* margin-top: 20px; */
+  display: flex;
+}
+
+form input[type=url]{
+  /* border-radius: 6px; */
+  border-radius: 6px 0px 0px 6px;
+  height: 36px;
+  padding: 2px 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width:70%;
+}
+
+form .urlBtn{
+  background-color: #0e0e7f;
+  border-radius: 0px 6px 6px 0px;
+  /* padding: 14px 24px; */
+  width:25%;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
 /* .svg-container {
   position: relative;
   width: 400px; 
@@ -305,3 +341,19 @@ form button{
   left: 50%; 
   transform: translate(-50%, -50%); 
 } */
+
+/* Loader */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

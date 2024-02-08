@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { useQRCode } from '../contexts/QRCodeContext'
 
 const QRCodeForm = ({
     patternColor,
@@ -11,7 +12,8 @@ const QRCodeForm = ({
 }) => {
 
     const [url, setUrl] = useState('')
-    const [qrCodeUrl, setQrCodeUrl] = useState('')
+    // const [qrCodeUrl, setQrCodeUrl] = useState('')
+    const { setQrCodeUrl, setLoading } = useQRCode()
   
     const handleSubmit = async (e) => {
 
@@ -25,6 +27,8 @@ const QRCodeForm = ({
           outerShape,
           outerColor
         }
+
+        setLoading(true)
         
         // Send data to AWS Lambda
         try {
@@ -32,15 +36,20 @@ const QRCodeForm = ({
 
           console.log(response.data.qr_code_url)
           setQrCodeUrl(response.data.qr_code_url)
+          if(setQrCodeUrl){
+            setLoading(false)
+          }
           setUrl('')
 
         } catch (error) {
           console.error('Error generating QR Code:', error)
-        }
+        }finally {
+          setLoading(false) // Ensure loading is set to false in all cases
+      }
     }
 
   return (
-    <div>
+    <div className="styleChoicesFormContainer">
         <form onSubmit={handleSubmit}>
             <input 
               type="url" 
@@ -49,14 +58,8 @@ const QRCodeForm = ({
               onChange={(e) => setUrl(e.target.value)}
               required
             />
-            <button className="downloadBtn" type="submit">Generate</button>
+            <button className="urlBtn" type="submit">Generate</button>
         </form>
-
-        {qrCodeUrl && (
-          <a href={qrCodeUrl} download className="downloadBtn">
-            Download QR Code
-          </a>
-        )}
     </div>
   )
 }
