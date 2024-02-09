@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const InnerShapeSelector = ({ setInnerColor, setInnerShape, innerColor}) => {
-  const [selectedShape, setSelectedShape] = useState('');
+  const [selectedShape, setSelectedShape] = useState('rectangle');
 
   const handleShapeClick = (shape) => {
     setInnerShape(shape);

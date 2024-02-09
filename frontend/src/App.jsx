@@ -9,11 +9,13 @@ import QRCodeDownload from './components/QRCodeDownload'
 
 const App = () => {
   const [outerShape, setOuterShape] = useState('circle')
-  const [outerColor, setOuterColor] = useState('#000000')
+  // const [outerColor, setOuterColor] = useState('#000000')
   const [innerShape, setInnerShape] = useState('circle')
-  const [innerColor, setInnerColor] = useState('#000000')
+  // const [innerColor, setInnerColor] = useState('#000000')
   const [patternColor, setPatternColor] = useState('#000000')
   const [patternChoice, setPatternChoice] = useState('dots')
+  const [outerColor, setOuterColor] = useState(patternColor)
+  const [innerColor, setInnerColor] = useState(patternColor)
 
   return (
     <QRCodeProvider>
@@ -38,9 +40,8 @@ const App = () => {
           />  */}
 
           <QRCodeDownload />
-      </div>
+        </div>
   
-
         <div className="styleChoices">
           <h2>Style Your QR Code</h2>
           <PatternSelector 
@@ -57,16 +58,16 @@ const App = () => {
             setInnerShape={setInnerShape} 
             setInnerColor={setInnerColor} 
             innerColor={innerColor} 
-            /> */}
+          />  */}
 
-            <QRCodeForm
+          <QRCodeForm
             outerShape={outerShape}
             outerColor={outerColor}
             innerShape={innerShape}
             innerColor={innerColor}
             patternChoice={patternChoice}
             patternColor={patternColor} 
-            /> 
+          /> 
         </div> 
       </div>
     </QRCodeProvider>
