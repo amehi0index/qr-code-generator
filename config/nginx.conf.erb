@@ -1,0 +1,21 @@
+daemon off;
+
+worker_processes <%= ENV['NGINX_WORKERS'] || 4 %>;
+pid /tmp/nginx.pid;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  server {
+    listen <%= ENV["PORT"] %>;
+    server_name _;
+    root /app/frontend/build; 
+
+    location / {
+      index index.html;
+      try_files $uri $uri/ /index.html;
+    }
+  }
+}
