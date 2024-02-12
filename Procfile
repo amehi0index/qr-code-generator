@@ -1,1 +1,0 @@
-web: echo "This is a static site"
