@@ -30,15 +30,7 @@ const App = () => {
             patternChoice={patternChoice}
             patternColor={patternColor}
           />
-        {/* <QRCodeForm
-          outerShape={outerShape}
-          outerColor={outerColor}
-          innerShape={innerShape}
-          innerColor={innerColor}
-          patternChoice={patternChoice}
-          patternColor={patternColor} 
-          />  */}
-
+  
           <QRCodeDownload />
         </div>
   
