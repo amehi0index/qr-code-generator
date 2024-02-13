@@ -51,19 +51,32 @@ The application supports custom styling options for the QR codes, including diff
    - Set the Lambda function's execution role with permissions to access S3 services.
    - Configure a Lambda Function URL in the AWS Lambda console to allow HTTP requests OR  configure an API Gateway to trigger the Lambda function.
 
-## Usage
+## Usage Instructions
 
-To use the QR code generator, send a JSON payload with a URL to the Lambda Function URL:
+### Using Postman
 
-```json
-{
-  "url": "https://example.com"
-}
-```
+1. **Prepare the JSON Payload:** Create a JSON object with the URL you wish to convert into a QR code. 
 
-The function will:
+    ```json
+    {
+      "url": "https://example.com"
+    }
+    ```
 
-- Generate a QR code for the provided URL.
-- Save the QR code as a PNG file.
-- Upload the file to the S3 bucket.
-- Return the URL of the uploaded QR code image.
+2. **Send the Request:** Use Postman to send this JSON payload as a POST request to the Lambda Function URL. Ensure the request header is set to `Content-Type: application/json`.
+
+### Using the Frontend Application
+
+1. **Navigate to the Application:** Open the deployed frontend application in your web browser.
+
+2. **Enter the URL:** In the provided input field, enter the URL you wish to convert into a QR code.
+
+3. **Customize Your QR Code:** (Optional) Use the available options to customize the appearance of your QR code, such as changing the pattern or colors.
+
+4. **Generate and Retrieve the QR Code:**
+    - Click the "Generate" button to create your QR code.
+    - The QR code will be automatically generated, saved as a PNG file, and uploaded to the configured S3 bucket.
+    - The application will then provide you with the URL to the uploaded QR code image, which you can download or share.
+
+## License
+This project is licensed under the MIT License - see the [MIT License](LICENSE.txt) file for details.
